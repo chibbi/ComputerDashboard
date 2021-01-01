@@ -1,0 +1,28 @@
+{
+  "name": "WebHosting",
+  "version": "1.0.0",
+  "description": "This project is nodeJS based Website for offering of Hosting capabilities.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chibbi/NONEXISTENT.git"
+  },
+  "author": "chibbi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chibbi/NONEXISTENT/issues"
+  },
+  "homepage": "https://github.com/chibbi/NONEXISTENT#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "multiparty": "^4.2.2",
+    "pug": "^3.0.0"
+  }
+}
