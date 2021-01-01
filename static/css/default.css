@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+}
+
+#mainContent {
+    margin-top: 74px;
+    margin-left: 4vw;
+    margin-right: 4vw;
+}
+
+/* Common */
+.center {
+    /* not working xD */
+    margin: auto;
+}
+
+/* Cookies Consent */
+.cookieconsent {
+    position: fixed;
+    padding: 10px;
+    left: 5%;
+    bottom: 20px;
+    background-color: rgb(1, 1, 1);
+
+    color: #fff;
+    text-align: center;
+    font-size: x-large;
+    height: auto;
+    width: 90%;
+    z-index: 99999;
+}
+
+.cookieconsent button {
+    display: block;
+    color: #CCCCCC;
+    background-color: rgb(31, 31, 31);
+    border: 3px solid #4caf50;
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
+    width: 30%;
+    margin-left: 35%;
+    font-size: 26px;
+}
+
+/* nav Bar */
+#navBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#navBar li {
+    float: right;
+    border-left: 1px solid #bbb;
+}
+
+#navBar #logolist {
+    float: left;
+    border-left: 0px;
+    padding: 0px;
+}
+
+#navBar li .navBarLink {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 28px 16px;
+    text-decoration: none;
+}
+
+#navBar li #logolink {
+    padding: 0px;
+}
+
+#navBar li .navBarLink:hover {
+    background-color: #111;
+}
+
+#navBar li #logolink:hover {
+    background-color: #333;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}

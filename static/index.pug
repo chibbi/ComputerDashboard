@@ -1,0 +1,27 @@
+doctype html
+html
+    include partials/head.pug
+    body
+        div(class='main')
+            div(id='navBar')
+                ul
+                    li(id="logolist")
+                        a(class="logolink" href=navBar.home.path)
+                            img(src='pictures/logo.png' alt='logo' style='width:70px; height:70px;')
+                    li
+                        a(class="navBarLink" href=navBar.contact.path) #{navBar.contact.name}
+                    li
+                        a(class="navBarLink" href=navBar.about.path) #{navBar.about.name}
+                    li
+                        a(class="navBarLink" href=navBar.services.path) #{navBar.services.name}
+                    li
+                        a(class="navBarLink" href=navBar.pricing.path) #{navBar.pricing.name}
+                    li
+                        a(class="navBarLink" href=navBar.products.path) #{navBar.products.name}
+                    //li
+                        a(class="navBarLink" href=navBar.home.path) #{navBar.home.name}
+            div(id="mainContent")
+                h1 home
+                p #{content.home}
+        include partials/foot.pug
+        script consentCookies();
