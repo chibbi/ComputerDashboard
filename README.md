@@ -4,13 +4,15 @@ The Dashboard gives you information about your server, and let's you turn it off
 You can easily [create your own actions](https://github.com/chibbi/ComputerDashboard/wiki/Create-your-own-Action)  
 The whole Folder is 9,6MB big, and 9,0MB without github-files.
 
-
 #### install:  
   1. make a file executable: ```chmod +x linux_json_api.sh```  
   2. install all needed node modules: ```npm install-clean```  
   3. create a "user.json" file in the "userDB" folder (there is a template for reference)  
        if you don't create that file, it will create it for you with the "user.json.template" file
-  4. start server with: ```npm test``` OR ```node index.js```
+  4. make a file executable: ```chmod +x startServer.sh```
+  5. start server with: ```./startServer.sh```
+       you can also restart the server with ```./startServer.sh```
+       ```./startServer.sh``` uses [screen](https://www.gnu.org/software/screen/), if you wish not to use it, just start the server manually with ```npm test``` OR ```node index.js```
 
 ### postinstall:  
   1. open ```http://localhost:3000```  
