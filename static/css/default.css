@@ -85,6 +85,73 @@ body {
     background-color: #333;
 }
 
+/* Action Flexbox */
+.actionList {
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.singleAction {
+    margin-left: 3px;
+}
+
+.singleAction button {
+    color: white;
+    height: 5em;
+    width: initial;
+    padding: 1.5em auto;
+    margin: 1em auto;
+    background-color: #FEB1C0;
+    border: none;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
+}
+
+.singleAction button:hover {
+    letter-spacing: 0.8em;
+    background-color: #F08C99;
+}
+
+/* Action Flexbox */
+.statsList {
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.singleStat {
+    margin-left: 3px;
+}
+
+/* https://codepen.io/ichoosesunny/pen/YGzRaJ */
+.singleStat button {
+    color: white;
+    height: 5em;
+    width: initial;
+    padding: 1.5em auto;
+    margin: 1em auto;
+    background-color: #FEB1C0;
+    border: none;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
+}
+
+.singleStat button:hover {
+    letter-spacing: 0.8em;
+    background-color: #F08C99;
+}
+
 /* Footer */
 footer {
     position: fixed;

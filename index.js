@@ -11,32 +11,37 @@ const bodyParser = require('body-parser');
 const morgan = require("morgan");
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(function (req, res, next) {
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(function(req, res, next) {
     res.setHeader('X-Powered-By', 'Rainbows')
     next()
 });
 
-app.use(morgan(function (tokens, req, res) {
+app.use(morgan(function(tokens, req, res) {
     log.printlog([tokens['remote-addr'](req, res),
-    tokens.method(req, res),
-    tokens.url(req, res),
-    tokens.status(req, res), '-',
-    tokens['total-time'](req, res), 'ms'
+        tokens.method(req, res),
+        tokens.url(req, res),
+        tokens.status(req, res), '-',
+        tokens['total-time'](req, res), 'ms'
     ].join(' '), 4);
 }));
-app.use(morgan(function (tokens, req, res) {
+app.use(morgan(function(tokens, req, res) {
     log.printlog([tokens['remote-addr'](req, res),
-    tokens.method(req, res),
-    tokens.url(req, res),
-    tokens.status(req, res), '-',
-    tokens['total-time'](req, res), 'ms'
+        tokens.method(req, res),
+        tokens.url(req, res),
+        tokens.status(req, res), '-',
+        tokens['total-time'](req, res), 'ms'
     ].join(' '), 3);
 }, {
-    skip: function (req, res) { return res.statusCode < 400 }
+    skip: function(req, res) {
+        return res.statusCode < 400
+    }
 }));
 
 app.set('view engine', 'pug');
+
 /* ROUTER */
 require("./router")(app);
 

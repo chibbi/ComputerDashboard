@@ -1,9 +1,13 @@
 module.exports = function(app) {
     const fs = require("fs");
     const log = require("./logging")();
+    const compStats = require("./comp-stats")();
     const sessionParser = require("./session-parser")();
     const lclen = require("./locales/en.json");
     const lclde = require("./locales/de.json");
+
+    sessionParser.loadSessions();
+    compStats.initializeStats();
 
     app.get("/favicon.ico", (req, res) => {
         res.sendFile(__dirname + "/static/pictures/logo.png");
@@ -22,53 +26,54 @@ module.exports = function(app) {
     });
 
     // pug CAN use normal HTML
-    app.get('/', function (req, res) {
+    app.get('/', function(req, res) {
         res.redirect("/login");
     })
 
-    app.get('/login', function (req, res) {
+    app.get('/login', function(req, res) {
         if (req.cookies.session == undefined) {
-            res.sendFile(__dirname + "/static/login.html");
+            res.render(__dirname + "/static/login.pug", lclen);
         }
-        var [loggedin, user] = cloud.isLoggedIn(req.cookies.session);
+        var [loggedin, user] = sessionParser.isLoggedIn(req.cookies.session);
         if (loggedin) {
             res.redirect("/home");
         } else {
-            res.sendFile(__dirname + "/static/login.html");
+            res.render(__dirname + "/static/login.pug", lclen);
         }
     })
 
-    app.post('/login', upload.none(), function (req, res) {
+    app.post('/login', function(req, res) {
         var loggedin = false;
         var user = req.body.title;
         var userpw = req.body.text;
         if (user == undefined || userpw == undefined) {
-            res.sendFile(__dirname + "/static/login.html");
+            res.render(__dirname + "/static/login.pug", lclen);
         } else {
             // TODO: hash those password :: https://www.toptal.com/nodejs/secure-rest-api-in-nodejs
             var usersJsonFile = JSON.parse(fs.readFileSync(__dirname + "/userDB/users.json", "utf8"));
-            for (var i = 0; i < Object.keys(usersJsonFile).length; i++) {
-                var element = usersJsonFile[i];
+            for (const things in usersJsonFile) {
+                var element = usersJsonFile[things];
+                console.log(element);
                 if (user == element.name && userpw == element.password) {
                     loggedin = true;
                     log.log(user, 4);
                 }
             }
             if (loggedin) {
-                res.cookie('session', cloud.createSession(user), {});
-                setTimeout(() => { }, 100);
+                res.cookie('session', sessionParser.createSession(user), {});
+                setTimeout(() => {}, 100);
                 res.redirect("/home");
             } else {
-                res.sendFile(__dirname + "/static/login.html");
+                res.render(__dirname + "/static/login.pug", lclen);
             }
         }
     })
 
-    app.get('/home', function (req, res) {
+    app.get('/home', function(req, res) {
         if (req.cookies.session == undefined) {
             res.redirect("/login");
         }
-        var [loggedin, user] = cloud.isLoggedIn(req.cookies.session);
+        var [loggedin, user] = sessionParser.isLoggedIn(req.cookies.session);
         if (loggedin) {
             if (req.cookies.lcl == "de") {
                 res.render(__dirname + "/static/index.pug", lclde);
@@ -80,13 +85,25 @@ module.exports = function(app) {
         }
     })
 
-    app.get('/api', function (req, res) {
+    app.get('/api', function(req, res) {
         if (req.cookies.session == undefined) {
             res.redirect("/login");
         }
-        var [loggedin, user] = cloud.isLoggedIn(req.cookies.session);
+        var [loggedin, user] = sessionParser.isLoggedIn(req.cookies.session);
         if (loggedin) {
-            // TODO send stast
+            res.json(compStats.getStats());
+        } else {
+            res.redirect("/login");
+        }
+    })
+    app.post('/api', function(req, res) {
+        if (req.cookies.session == undefined) {
+            res.redirect("/login");
+        }
+        var [loggedin, user] = sessionParser.isLoggedIn(req.cookies.session);
+        if (loggedin) {
+            compStats.goInMode(req.body.cmd);
+            res.json("Succesful");
         } else {
             res.redirect("/login");
         }

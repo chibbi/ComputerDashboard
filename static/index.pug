@@ -8,20 +8,30 @@ html
                     li(id="logolist")
                         a(class="logolink" href=navBar.home.path)
                             img(src='pictures/logo.png' alt='logo' style='width:70px; height:70px;')
-                    li
+                    //li
                         a(class="navBarLink" href=navBar.contact.path) #{navBar.contact.name}
-                    li
+                    //li
                         a(class="navBarLink" href=navBar.about.path) #{navBar.about.name}
                     li
-                        a(class="navBarLink" href=navBar.services.path) #{navBar.services.name}
+                        a(class="navBarLink" href=navBar.stats.path) #{navBar.stats.name}
                     li
-                        a(class="navBarLink" href=navBar.pricing.path) #{navBar.pricing.name}
+                        a(class="navBarLink" href=navBar.actions.path) #{navBar.actions.name}
                     li
-                        a(class="navBarLink" href=navBar.products.path) #{navBar.products.name}
-                    //li
                         a(class="navBarLink" href=navBar.home.path) #{navBar.home.name}
             div(id="mainContent")
                 h1 home
-                p #{content.home}
+                p #{content.home.home}
+                h1 actions
+                div(class="actionList")
+                    div(class="singleAction")
+                        button(id="monitorSleep",onclick='sendCmd("monitorSleep")') #{content.actions.monitorSleep}
+                    div(class="singleAction")
+                        button(id="pcSleep",onclick='sendCmd("pcSleep")') #{content.actions.pcSleep}
+                    div(class="singleAction")
+                        button(id="pcHibernate",onclick='sendCmd("pcHibernate")') #{content.actions.pcHibernate}
+                    div(class="singleAction")
+                        button(id="pcShutdown",onclick='sendCmd("pcShutdown")') #{content.actions.pcShutdown}
+                h1 stats
+        script(src='/js/getData.js')
         include partials/foot.pug
         script consentCookies();

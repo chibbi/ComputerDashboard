@@ -1,23 +1,19 @@
 {
     "head": {
-        "title": "YAC Hosting"
+        "title": "Main Desktop Dashboard"
     },
     "navBar": {
         "home": {
             "path": "/",
-            "name": "HOME"
+            "name": "TOP"
         },
-        "products": {
-            "path": "#products",
-            "name": "PRODUCTS"
+        "actions": {
+            "path": "#actions",
+            "name": "ACTIONS"
         },
-        "pricing": {
-            "path": "#pricing",
-            "name": "PRICING"
-        },
-        "services": {
-            "path": "#services",
-            "name": "SERVICES"
+        "stats": {
+            "path": "#stats",
+            "name": "STATS"
         },
         "about": {
             "path": "#about",
@@ -26,13 +22,18 @@
         "contact": {
             "path": "#contact",
             "name": "CONTACT"
-        },
-        "login": {
-            "path": "/login",
-            "name": "LOGIN"
         }
     },
     "content": {
-        "home": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed tempor and vitality, so that the labor and sorrow, some important things to do eiusmod. Over the years, I will come, who will nostrud aliquip out of her the advantage of exercise, so that stimulus efforts if the school district and longevity. Want to be a pain in the cupidatat cillum has been criticized in the Duis et dolore magna flee produces no resultant pleasure. Excepteur cupidatat blacks are not excepteur, is soothing to the soul, that is, they are my toil, they deserted the general is to blame that services should be"
+        "actions": {
+            "monitorSleep": "Set Monitors to Sleep",
+            "pcSleep": "Set PC to Sleep",
+            "pcHibernate": "Hibernate PC",
+            "pcShutdown": "Shutdown PC"
+        },
+        "home": {
+            "home": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed tempor and vitality, so that the labor and sorrow, some important things to do eiusmod. Over the years, I will come, who will nostrud aliquip out of her the advantage of exercise, so that stimulus efforts if the school district and longevity. Want to be a pain in the cupidatat cillum has been criticized in the Duis et dolore magna flee produces no resultant pleasure. Excepteur cupidatat blacks are not excepteur, is soothing to the soul, that is, they are my toil, they deserted the general is to blame that services should be"
+
+        }
     }
 }

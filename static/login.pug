@@ -1,0 +1,17 @@
+doctype html
+html
+    include partials/head.pug
+    body
+        div(class='main')
+            div(id="mainContent")
+                div(class="loginForm")
+                form(action="/login" method="post" enctype="application/x-www-form-urlencoded")
+                    p(style="text-align: center;") Name:
+                    input(style="font-size: 18px;" type="text" id="title" name="title" placeholder="Name" required)
+                    p(style="text-align: center;") Password:
+                    input(style="font-size: 18px;" type="password" id="text" name="text" placeholder="Password" autocomplete="current-password" required)
+                    <br><br>
+                    input(type="submit")
+
+        include partials/foot.pug
+        script consentCookies();

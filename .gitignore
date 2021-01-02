@@ -1,3 +1,4 @@
 userDB/users.json
+userDB/sessions.json
 logs/*.log
 node_modules/

@@ -1,4 +1,5 @@
 module.exports = function() {
+    const fs = require("fs");
 
     let sessions = [];
 
@@ -11,8 +12,10 @@ module.exports = function() {
             for (var i = 0; i < sessions.length; i++) {
                 if (num == sessions[i].num) {
                     exists = true;
-                } // 1800000 == 30Minutes
-                if (sessions[i].millsec >= 1800000) {
+                }
+                // 1800000 == 30 Minutes
+                // 2.592E9 == 30 Days
+                if (sessions[i].millsec >= 1, 2.592E9) {
                     sessions.splice(i, 1);
                 }
             }
@@ -23,6 +26,7 @@ module.exports = function() {
             });
             break;
         }
+        saveSessions();
         return num;
     }
 
@@ -38,6 +42,14 @@ module.exports = function() {
             }
         }
         return [false, ""];
+    }
+
+    module.loadSessions = function() {
+        sessions = JSON.parse(fs.readFileSync(__dirname + "/userDB/sessions.json", "utf8"));
+    }
+
+    function saveSessions() {
+        fs.writeFileSync(__dirname + "/userDB/sessions.json", Buffer.from(JSON.stringify(sessions), "utf8"));
     }
     return module;
 };
