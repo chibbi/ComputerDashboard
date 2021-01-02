@@ -1,6 +1,7 @@
 # ComputerDashboard
 a simple Dashboard for the **LOCAL NETWORK**, that shows you some information about your Computer, and lets you turn it off  
-The Dashboard gives you information about your server, and let's you turn it off, put it to sleep, or other stuff. You can easily [create your own actions](https://github.com/chibbi/ComputerDashboard/wiki/Create-your-own-Action)
+The Dashboard gives you information about your server, and let's you turn it off, put it to sleep, or other stuff. You can easily [create your own actions](https://github.com/chibbi/ComputerDashboard/wiki/Create-your-own-Action)  
+The whole Folder is 9,6MB big, and 9,0MB without github-files.
 
 
 #### install:  
