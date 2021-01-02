@@ -4,6 +4,8 @@ The Dashboard gives you information about your server, and let's you turn it off
 You can easily [create your own actions](https://github.com/chibbi/ComputerDashboard/wiki/Create-your-own-Action)  
 The whole Folder is 9,6MB big, and 9,0MB without github-files.
 
+##### This Dashboard requires nodejs 15.0 or higher.
+
 #### install:  
   1. make a file executable: ```chmod +x linux_json_api.sh```  
   2. install all needed node modules: ```npm install-clean```  
