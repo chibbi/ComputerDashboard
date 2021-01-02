@@ -20,17 +20,25 @@ body {
     background-color: lightslategrey;
 }
 
+/* Common */
 #mainContent {
-    margin-top: 74px;
+    margin-top: 75px;
     margin-left: 4vw;
     margin-right: 4vw;
+    margin-bottom: 60px;
 }
 
-/* Common */
 .center {
     /* not working xD */
     margin: auto;
 }
+
+.codeBlockPre {
+    background-color: lavender;
+    width: fit-content;
+    margin: auto;
+}
+
 
 /* Cookies Consent */
 .cookieconsent {

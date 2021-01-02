@@ -20,10 +20,14 @@ function fetchData() {
                             if (oen["interface"] == "internal") {
                                 htmlSing = document.getElementById("int_ip_address");
                                 htmlSing.innerHTML = "";
-                                console.log(oen["ip"]);
                                 var newLiFor = document.createElement('li');
                                 appendTo(newLiFor, "Your IP for other Devices: ");
-                                appendTo(newLiFor, JSON.stringify(oen["ip"]));
+                                var newCode = document.createElement('code');
+                                appendTo(newCode, JSON.stringify(oen["ip"]) + ":" + window.location.port);
+                                var newPre = document.createElement('pre');
+                                newPre.className = "codeBlockPre";
+                                newPre.appendChild(newCode);
+                                newLiFor.appendChild(newPre);
                                 htmlSing.appendChild(newLiFor);
                             }
                             var newLi = document.createElement('li');
@@ -137,11 +141,44 @@ function fetchData() {
                             html.appendChild(newLi);
                         }
                         break;
+                    case "io_stats":
+                        // TODO: DO THIS IN TABLE FORM and add button for more info?
+                        var newLi = document.createElement('li');
+                        newLi.style.fontSize = "25px"; // TODO: can be changed to font-size-adjust in future (currently only firefox supports it)
+                        newLi.style.padding = "7px";
+                        appendTo(newLi, "io stats");
+                        html.appendChild(newLi);
+                        for (const property in element) {
+                            var eon = element[property];
+                            var newLi = document.createElement('li');
+                            for (const interior in eon) {
+                                // OPTIONS:: device ; reads ; writes ; time ; in_prog.
+                                if (interior == "device") {
+                                    appendTo(newLi, JSON.stringify(interior) + "=");
+                                    appendTo(newLi, JSON.stringify(eon[interior]) + " | ");
+                                } else if (interior == "reads") {
+                                    appendTo(newLi, JSON.stringify(interior) + "=");
+                                    appendTo(newLi, JSON.stringify(eon[interior]) + "KB | ");
+                                } else if (interior == "writes") {
+                                    appendTo(newLi, JSON.stringify(interior) + "=");
+                                    appendTo(newLi, JSON.stringify(eon[interior]) + "KB | ");
+                                } else if (interior == "time") {
+                                    appendTo(newLi, JSON.stringify(interior) + "=");
+                                    appendTo(newLi, JSON.stringify(eon[interior]) + "KB | ");
+                                } else if (interior == "in_prog.") {
+                                    // always 0 right now, so useless
+                                    // appendTo(newLi, JSON.stringify(interior) + "=");
+                                    // appendTo(newLi, JSON.stringify(eon[interior]));
+                                }
+                            }
+                            html.appendChild(newLi);
+                        }
+                        break;
                     default:
                         for (const property in element) {
                             var newLi = document.createElement('li');
-                            newLi.appendChild(document.createTextNode(JSON.stringify(property) + " = "));
-                            newLi.appendChild(document.createTextNode(JSON.stringify(element[property])));
+                            appendTo(newLi, JSON.stringify(property) + " =");
+                            appendTo(newLi, JSON.stringify(element[property]));
                             html.appendChild(newLi);
                         }
                         break;
@@ -171,5 +208,5 @@ function sendCmd(cmd) {
 }
 
 // fetches a ruffly 5KB sized File every second
-// setInterval(fetchData, 1000);
+setInterval(fetchData, 1000);
 fetchData();

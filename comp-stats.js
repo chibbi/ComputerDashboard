@@ -27,7 +27,7 @@ module.exports = function() {
     }
 
     module.initializeStats = function() {
-        setInterval(getNewStats, 2000);
+        setInterval(getNewStats, 1000);
     }
 
     module.goInMode = function(mode) {
