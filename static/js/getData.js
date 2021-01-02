@@ -17,6 +17,15 @@ function fetchData() {
                     case "ip_addresses": // TODO: Test with multiple ips (should work)
                         for (const property in element) {
                             var oen = element[property];
+                            if (oen["interface"] == "internal") {
+                                htmlSing = document.getElementById("int_ip_address");
+                                htmlSing.innerHTML = "";
+                                console.log(oen["ip"]);
+                                var newLiFor = document.createElement('li');
+                                appendTo(newLiFor, "Your IP for other Devices: ");
+                                appendTo(newLiFor, JSON.stringify(oen["ip"]));
+                                htmlSing.appendChild(newLiFor);
+                            }
                             var newLi = document.createElement('li');
                             appendTo(newLi, JSON.stringify(oen["interface"]) + " = ");
                             appendTo(newLi, JSON.stringify(oen["ip"]));

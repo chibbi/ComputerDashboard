@@ -50,6 +50,11 @@ module.exports = function(app) {
             res.render(__dirname + "/static/login.pug", lclen);
         } else {
             // TODO: hash those password :: https://www.toptal.com/nodejs/secure-rest-api-in-nodejs
+            if (!fs.existsSync(__dirname + "/userDB/users.json")) {
+                log.printlog("Please create your own users.json file", 2)
+                fs.copyFileSync(__dirname + "/userDB/users.json.template", __dirname + "/userDB/users.json", COPYFILE_EXCL);
+
+            }
             var usersJsonFile = JSON.parse(fs.readFileSync(__dirname + "/userDB/users.json", "utf8"));
             for (const things in usersJsonFile) {
                 var element = usersJsonFile[things];

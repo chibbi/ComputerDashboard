@@ -1,3 +1,16 @@
+@media (max-width: 1001px) {
+    body {
+        font-size: 22px;
+    }
+}
+
+/* DESKTOP-specific */
+@media (min-width: 1001px) {
+    body {
+        font-size: 17px;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
