@@ -27,7 +27,7 @@ module.exports = function() {
     }
 
     module.initializeStats = function() {
-        setInterval(getNewStats, 10000);
+        setInterval(getNewStats, 2000);
     }
 
     module.goInMode = function(mode) {
@@ -48,12 +48,16 @@ module.exports = function() {
     }
 
     function getNewStats() {
-        var stats = [];
-        var cpuInfo = getSpecificStat("cpu_info");
-        console.log(cpuInfo);
-        allstats = stats;
-        fs.writeFileSync(__dirname + "/userDB/users.json", Buffer.from(JSON.stringify(stats)), "utf8");
-        return true;
+        fs.writeFileSync(__dirname + "/public/stats.json", Buffer.from("{}"), "utf8"); //  clearing File
+        getSpecificStat("cpu_info"); // not changing
+        getSpecificStat("cpu_temp");
+        getSpecificStat("cpu_intensive_processes");
+        getSpecificStat("current_ram");
+        getSpecificStat("general_info");
+        getSpecificStat("io_stats");
+        getSpecificStat("ram_intensive_processes");
+        getSpecificStat("ip_addresses"); // not changing often 
+        // TODO: implement soemthing, that stops those not often changing variables to be recalled every second
     }
 
     function execCommand(cmd) {
@@ -71,8 +75,6 @@ module.exports = function() {
     }
 
     function getSpecificStat(funcName) {
-        var stats = [];
-
         exec("./linux_json_api.sh " + funcName, (error, stdout, stderr) => {
             if (error) {
                 log.printlog(`error: ${error.message}`, 0);
@@ -82,10 +84,11 @@ module.exports = function() {
                 log.printlog(`stderr: ${stderr}`, 0);
                 return;
             }
-            stats = stdout;
+            stats = JSON.parse(fs.readFileSync(__dirname + "/public/stats.json", "utf8"));
+            stats[funcName] = JSON.parse(stdout);
+            allstats = stats;
+            fs.writeFileSync(__dirname + "/public/stats.json", Buffer.from(JSON.stringify(stats)), "utf8");
         });
-
-        return stats;
     }
     return module;
 }

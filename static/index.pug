@@ -13,15 +13,15 @@ html
                     //li
                         a(class="navBarLink" href=navBar.about.path) #{navBar.about.name}
                     li
-                        a(class="navBarLink" href=navBar.stats.path) #{navBar.stats.name}
+                        a(class="navBarLink" href=navBar.stats.path title=navBar.stats.name) #{navBar.stats.name}
                     li
-                        a(class="navBarLink" href=navBar.actions.path) #{navBar.actions.name}
+                        a(class="navBarLink" href=navBar.actions.path title=navBar.actions.name) #{navBar.actions.name}
                     li
-                        a(class="navBarLink" href=navBar.home.path) #{navBar.home.name}
+                        a(class="navBarLink" href=navBar.home.path title=navBar.home.name) #{navBar.home.name}
             div(id="mainContent")
-                h1 home
+                h1(id="home") home
                 p #{content.home.home}
-                h1 actions
+                h1(id="actions") actions
                 div(class="actionList")
                     div(class="singleAction")
                         button(id="monitorSleep",onclick='sendCmd("monitorSleep")') #{content.actions.monitorSleep}
@@ -31,7 +31,24 @@ html
                         button(id="pcHibernate",onclick='sendCmd("pcHibernate")') #{content.actions.pcHibernate}
                     div(class="singleAction")
                         button(id="pcShutdown",onclick='sendCmd("pcShutdown")') #{content.actions.pcShutdown}
-                h1 stats
+                h1(id="stats") stats
+                div(class="statsList")
+                    div(class="singleStat")
+                        ul(id="ip_addresses")
+                    div(class="singleStat",id="cpu_tempDiv")
+                        ul(id="cpu_temp")
+                    div(class="singleStat")
+                        ul(id="current_ram")
+                    div(class="singleStat")
+                        ul(id="general_info",style="width: 82vw;")
+                    div(class="singleStat")
+                        ul(id="cpu_intensive_processes",style="width: 82vw;")
+                    div(class="singleStat")
+                        ul(id="ram_intensive_processes",style="width: 82vw;")
+                    div(class="singleStat")
+                        ul(id="io_stats",style="width: 82vw;")
+                    div(class="singleStat",id="cpu_infoDiv")
+                        ul(id="cpu_info",style="width: 82vw;")
         script(src='/js/getData.js')
         include partials/foot.pug
         script consentCookies();

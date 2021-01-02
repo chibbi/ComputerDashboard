@@ -4,7 +4,7 @@
 # completly copied from: https://github.com/afaqurk/linux-dash/blob/master/app/server/linux_json_api.sh#L12
 #  only small changes were made
 #  mostly deleted the functions i didn't need (not yet)
-#
+#  changed a few functions because they didn't work
 
 #
 # all functions:
@@ -13,7 +13,7 @@
 #     common_applications => what is it exactly and WHY? NOT
 #     cpu_info => name
 #     cpu_intensive_processes => name
-#     cpu_temp => NOT working properly at my pc
+#     cpu_temp => NOT working properly at my pc => fixed
 #     cpu_utilization => i don't understand it NOT
 #     cron_history => no /var/log/syslog NOT
 #     current_ram => total amount, used amount and available amount of ram
@@ -22,7 +22,7 @@
 #     download_transfer_rate => current download rate?
 #     general_info => name
 #     io_stats => name
-#     ip_addresses => +short: command NOT found
+#     ip_addresses => +short: command NOT found => fixed
 #     load_avg => verryy different from htop output
 #     logged_in_users => name
 #     memcached => i do NOT know what it does
@@ -48,7 +48,7 @@ CAT=$(type -P cat)
 HEAD=$(type -P head)
 CUT=$(type -P cut)
 PS=$(type -P ps)
-
+SENSORS=$(type -P sensors)
 _parseAndPrint() {
   while read data; do
     $ECHO -n "$data" | $SED -r 's/\\//g' | $TR -d "\n";
@@ -131,23 +131,18 @@ cpu_temp() {
       echo "$((cpu/1000))" | _parseAndPrint
     ;;
     *)
-      if type -P sensors 2>/dev/null; then
         returnString=`sensors`
         #amd
         if [[ "${returnString/"k10"}" != "${returnString}" ]] ; then
-          $ECHO ${returnString##*k10} | $CUT -d ' ' -f 6 | $CUT -c 2- | $CUT -c 1-4
+          sensors | sed -nE 's/^Tdie: *([^ ]*)/{"Tdie":"\1"}/p' | tr -d +
         #intel
         elif [[ "${returnString/"core"}" != "${returnString}" ]] ; then
           fromcore=${returnString##*"coretemp"}
           $ECHO ${fromcore##*Physical}  | $CUT -d ' ' -f 3 | $CUT -c 2-5 | _parseAndPrint
         fi
-      else
-        $ECHO "[]" | _parseAndPrint
-      fi
     ;;
   esac
 }
-
 # by Paul Colby (http://colby.id.au), no rights reserved ;)
 cpu_utilization() {
 
@@ -329,15 +324,11 @@ ip_addresses() {
   local ifconfigCmd=$(type -P ifconfig)
   local digCmd=$(type -P dig)
 
-  externalIp=$($digCmd +short myip.opendns.com @resolver1.opendns.com)
+  externalIp=$(curl -s ipv4bot.whatismyipaddress.com)
+  internalIP=$(ip route get 1.2.3.4 | awk '{print $7}')
 
   $ECHO -n "["
-
-  for item in $($ifconfigCmd | $GREP -oP "^[a-zA-Z0-9:]*(?=:)")
-  do
-      $ECHO -n "{\"interface\" : \""$item"\", \"ip\" : \"$( $ifconfigCmd $item | $GREP "inet" | $AWK '{match($0,"inet (addr:)?([0-9.]*)",a)}END{ if (NR != 0){print a[2]; exit}{print "none"}}')\"}, "
-  done
-
+  $ECHO "{ \"interface\": \"internal\", \"ip\": \"$internalIP\" },"
   $ECHO "{ \"interface\": \"external\", \"ip\": \"$externalIp\" } ]" | _parseAndPrint
 }
 

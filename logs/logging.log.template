@@ -5,4 +5,4 @@ event.log TEMPLATE ::
 '01-01-2021_18:42:55  WARN - Started as DEVELOPMENT'
 
 info.log TEMPLATE ::
-'01-01-2021_18:42:58  INFO - ::ffff:127.0.0.1 GET / 200 - 16.116 ms'
+'01-01-2021_18:42:58  INFO - ::ffff:127.0.0.1 GET / 200 - 1.116 ms'

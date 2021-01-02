@@ -1,5 +1,10 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
+    background-color: lightslategrey;
 }
 
 #mainContent {
@@ -52,6 +57,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 100;
 }
 
 #navBar li {
@@ -109,17 +115,18 @@ body {
     border: none;
     border-radius: 3px;
     text-transform: uppercase;
-    letter-spacing: 0.5em;
+    letter-spacing: 0.3em;
     transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
 }
 
 .singleAction button:hover {
-    letter-spacing: 0.8em;
+    letter-spacing: 0.6em;
     background-color: #F08C99;
 }
 
-/* Action Flexbox */
+/* Stats Flexbox */
 .statsList {
+    text-align: center;
     overflow: hidden;
     display: flex;
     align-items: flex-start;
@@ -130,26 +137,40 @@ body {
 
 .singleStat {
     margin-left: 3px;
+    position: relative;
 }
 
 /* https://codepen.io/ichoosesunny/pen/YGzRaJ */
-.singleStat button {
-    color: white;
-    height: 5em;
-    width: initial;
-    padding: 1.5em auto;
+.singleStat ul {
+    color: rgb(82, 82, 82);
+    height: auto;
+    width: 38vw;
+    padding: 1.5em 1em;
     margin: 1em auto;
     background-color: #FEB1C0;
     border: none;
-    border-radius: 3px;
     text-transform: uppercase;
-    letter-spacing: 0.5em;
+    letter-spacing: 0.2em;
+    list-style-type: none;
     transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
 }
 
-.singleStat button:hover {
-    letter-spacing: 0.8em;
-    background-color: #F08C99;
+.singleStat ul li {
+    border-bottom: 1px solid rgb(228, 215, 215);
+}
+
+.singleStat ul li:last-child {
+    border-bottom: none;
+}
+
+.singleStat ul li:after {
+    content: '\A';
+    position: absolute;
+    background: #e96d86;
+    top: 1em;
+    bottom: 1em;
+    left: 0;
+    opacity: 70%;
 }
 
 /* Footer */
