@@ -10,8 +10,8 @@ The whole Folder is 9,6MB big, and 9,0MB without github-files.
   3. create a "user.json" file in the "userDB" folder (there is a template for reference)  
        if you don't create that file, it will create it for you with the "user.json.template" file
   4. make a file executable: ```chmod +x startServer.sh```
-  5. start server with: ```./startServer.sh```
-       you can also restart the server with ```./startServer.sh```
+  5. start server with: ```./startServer.sh```  
+       you can also restart the server with ```./startServer.sh```  
        ```./startServer.sh``` uses [screen](https://www.gnu.org/software/screen/), if you wish not to use it, just start the server manually with ```npm test``` OR ```node index.js```
 
 ### postinstall:  
