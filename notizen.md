@@ -3,6 +3,9 @@ java implementation:
    - [platformagnostic shutdown](https://stackoverflow.com/questions/25637/shutting-down-a-computer)
    - [windows sleep](https://stackoverflow.com/questions/1369122/sleep-windows-from-java)
  - stats:
-   - [aomwthing]()
+   - just use the bash script for linux
+   - for windows you have to create basically the same, but with the windows applications
+   - for macOS don't do stuff xD, but i think linux script should work partly
  - webserver:
    - [my simple webserver](https://github.com/chibbi/SimpleJavaWebserver)
+   - ["more native" webserver](https://ssaurel.medium.com/create-a-simple-http-web-server-in-java-3fc12b29d5fd)
