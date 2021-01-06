@@ -6,6 +6,15 @@ const httpport = 3000;
 
 const log = require("./logging")();
 
+    if (!fs.existsSync(__dirname + "/userDB/users.json")) {
+        log.printlog("Please create your own users.json file", 2)
+        fs.copyFileSync(__dirname + "/userDB/users.json.template", __dirname + "/userDB/users.json");
+    }
+    if (!fs.existsSync(__dirname + "/userDB/sessions.json")) {
+        log.printlog("Created sessions.json file", 5)
+        fs.appendFileSync(__dirname + "/userDB/sessions.json", 'data to append', 'utf8');
+    }
+
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require("morgan");

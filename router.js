@@ -9,12 +9,6 @@ module.exports = function(app) {
     sessionParser.loadSessions();
     compStats.initializeStats();
 
-
-    if (!fs.existsSync(__dirname + "/userDB/users.json")) {
-        log.printlog("Please create your own users.json file", 2)
-        fs.copyFileSync(__dirname + "/userDB/users.json.template", __dirname + "/userDB/users.json");
-    }
-
     app.get("/favicon.ico", (req, res) => {
         res.sendFile(__dirname + "/static/pictures/logo.png");
     });
