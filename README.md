@@ -6,6 +6,9 @@ The whole Folder is 9,6MB big, and 9,0MB without github-files.
 
 ##### This Dashboard requires nodejs 15.0 or higher.
 
+#### Picture, of the full Website:
+![website](https://github.com/chibbi/ComputerDashboard/blob/main/Screenshot_2021-01-06%20Main%20Desktop%20Dashboard.png)
+
 #### install:  
   1. make a file executable: ```chmod +x linux_json_api.sh```  
   2. install all needed node modules: ```npm install-clean```  
