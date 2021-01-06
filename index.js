@@ -13,7 +13,7 @@ const log = require("./logging")();
     }
     if (!fs.existsSync(__dirname + "/userDB/sessions.json")) {
         log.printlog("Created sessions.json file", 5)
-        fs.appendFileSync(__dirname + "/userDB/sessions.json", 'data to append', 'utf8');
+        fs.appendFileSync(__dirname + "/userDB/sessions.json", '', 'utf8');
     }
 
 const cookieParser = require('cookie-parser');
