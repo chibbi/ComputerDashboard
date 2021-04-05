@@ -1,14 +1,14 @@
 # ComputerDashboard [![](https://tokei.rs/b1/github/chibbi/ComputerDashboard)](https://tokei.rs/b1/github/chibbi/ComputerDashboard)
-a simple Dashboard for the **LOCAL NETWORK**, that shows you some information about your Computer, and lets you turn it off  
-The Dashboard gives you information about your server, and let's you turn it off, put it to sleep, or other stuff.  
+a simple dashboard for the **LOCAL NETWORK**, that shows you some information about your computer, and lets you turn it off  
+The dashboard gives you information about your server, and let's you turn it off, put it to sleep, or other stuff.  
 You can easily [create your own actions](https://github.com/chibbi/ComputerDashboard/wiki/Create-your-own-Action)  
-The whole Folder is 9,6MB big, and 9,0MB without github-files.
+The whole folder is 9,6MB big, and 9,0MB without github-files.
 
-##### This Dashboard requires nodejs 15.0 or higher.
+##### This dashboard requires nodejs 15.0 or higher.
 
 ## Uses pug (unecessarily so i should just remove it) which seems to contain vulnerabilites
 
-#### Picture, of the full Website:
+#### Picture, of the full website:
 ![website](https://github.com/chibbi/ComputerDashboard/blob/main/Screenshot_2021-01-06%20Main%20Desktop%20Dashboard.png)
 
 #### install:  
