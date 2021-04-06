@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Main Desktop Dashboard</title>
+    <meta name="description" content="Official Website of Raninninn">
+    <meta name="author" content="chibbi">
+    <link rel="stylesheet" href="css/default.css">
+    <script src="/js/default.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div id="navBar">
+            <ul>
+                <li id="logolist"><a class="logolink" href="/"><img src="pictures/logo.png" alt="logo"
+                            style="width:70px; height:70px;"></a></li>
+                <!--lia(class="navBarLink" href=navBar.contact.path) CONTACT-->
+                <!--lia(class="navBarLink" href=navBar.about.path) ABOUT-->
+                <li><a class="navBarLink" href="#stats" title="STATS">STATS</a></li>
+                <li><a class="navBarLink" href="#actions" title="ACTIONS">ACTIONS</a></li>
+                <li><a class="navBarLink" href="#" title="TOP">TOP</a></li>
+            </ul>
+        </div>
+        <div id="mainContent">
+            <h1 id="home">home</h1>
+            <div class="singleStat">
+                <ul id="int_ip_address" style="width: 60vw;text-align: center;"></ul>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed tempor and vitality, so that the labor and
+                sorrow, some important things to do eiusmod. Over the years, I will come, who will nostrud aliquip out
+                of her the advantage of exercise, so that stimulus efforts if the school district and longevity. Want to
+                be a pain in the cupidatat cillum has been criticized in the Duis et dolore magna flee produces no
+                resultant pleasure. Excepteur cupidatat blacks are not excepteur, is soothing to the soul, that is, they
+                are my toil, they deserted the general is to blame that services should be</p>
+            <h1 id="actions">actions</h1>
+            <div class="actionList">
+                <div class="singleAction"><button id="monitorSleep" onclick="sendCmd('monitorSleep')">Set
+                        Monitors to Sleep</button></div>
+                <div class="singleAction"><button id="pcSleep" onclick="sendCmd('pcSleep')">Set PC to
+                        Sleep</button></div>
+                <div class="singleAction"><button id="pcHibernate" onclick="sendCmd('pcHibernate')">Hibernate
+                        PC</button></div>
+                <div class="singleAction"><button id="pcShutdown" onclick="sendCmd('pcShutdown')">Shutdown
+                        PC</button></div>
+                <div class="singleAction"><button id="appShutdown" onclick="sendCmd('appShutdown')">Kill this
+                        Server</button></div>
+            </div>
+            <h1 id="stats">stats</h1>
+            <div class="statsList">
+                <div class="singleStat">
+                    <ul id="ip_addresses"></ul>
+                </div>
+                <div class="singleStat" id="cpu_tempDiv">
+                    <ul id="cpu_temp"></ul>
+                </div>
+                <div class="singleStat">
+                    <ul id="current_ram"></ul>
+                </div>
+                <div class="singleStat">
+                    <ul id="general_info" style="width: 82vw;"></ul>
+                </div>
+                <div class="singleStat">
+                    <ul id="cpu_intensive_processes" style="width: 82vw;"></ul>
+                </div>
+                <div class="singleStat">
+                    <ul id="ram_intensive_processes" style="width: 82vw;"></ul>
+                </div>
+                <div class="singleStat">
+                    <ul id="io_stats" style="width: 82vw;"></ul>
+                </div>
+                <div class="singleStat" id="cpu_infoDiv">
+                    <ul id="cpu_info" style="width: 82vw;"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/getData.js"></script>
+    <footer>
+        <p>Copyright (c) chibbi</p>
+    </footer>
+    <script>consentCookies();</script>
+</body>
+
+</html>

@@ -44,6 +44,9 @@ module.exports = function() {
             case "pcShutdown":
                 execCommand("shutdown");
                 break;
+            case "appShutdown":
+                process.exit(137);
+                break;
         }
     }
 

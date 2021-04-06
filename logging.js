@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function() {
     const fs = require("fs");
 
     const logging = 5;
@@ -10,42 +10,41 @@ module.exports = function () {
     // logging = 4 Errors, Alerts, Warnings and infos (who visited)
     // logging = 5 Errors, Alerts, Warnings and infos (who visited) and debug
 
-    module.log = function (text, logheight) {
+    module.log = function(text, logheight) {
         // should change it to switch case 
-        if(logheight == "undefined") {
-            console.log(addTimeStamp() + " NOLOGDEFINED - " + text);
+        if (logheight == undefined) {
+            console.log(addTimeStamp() + "\x1b[33m NOLOGDEFINED \x1b[33m - " + text + "\x1b[0m"); // everything yellow
         } else if (logging >= 0 && logheight == 0) {
-            console.log(addTimeStamp() + " ERROR - " + text);
+            console.log(addTimeStamp() + "\x1b[31m ERROR \x1b[0m - " + text); // red
         } else if (logging >= 1 && logheight == 1) {
-            console.log(addTimeStamp() + " ALERT - " + text);
+            console.log(addTimeStamp() + "\x1b[31m ALERT \x1b[0m - " + text); // red
         } else if (logging >= 2 && logheight == 2) {
-            console.log(addTimeStamp() + "  WARN - " + text);
+            console.log(addTimeStamp() + "\x1b[33m  WARN \x1b[0m - " + text); // yellow
         } else if (logging >= 3 && logheight == 3) {
-            console.log(addTimeStamp() + "  INFO - " + text);
+            console.log(addTimeStamp() + "\x1b[36m  INFO \x1b[0m - " + text); // cyan
         } else if (logging >= 4 && logheight == 4) {
-            console.log(addTimeStamp() + "  INFO - " + text);
+            console.log(addTimeStamp() + "\x1b[36m  INFO \x1b[0m - " + text); // cyan
         } else if (logging >= 5 && logheight == 5) {
-            console.log(addTimeStamp() + " DEBUG - " + text);
+            console.log(addTimeStamp() + "\x1b[32m DEBUG \x1b[0m - " + text); // green
         }
     };
 
-    module.printlog = function (text, logheight) {
+    module.printlog = function(text, logheight) {
         // should change it to switch case 
-        if(logheight == "undefined") {
-            console.log(addTimeStamp() + " NOLOGDEFINED - " + text);
+        if (logheight == undefined) {
+            console.log(addTimeStamp() + "\x1b[33m NOLOGDEFINED \x1b[33m - " + text + "\x1b[0m"); // everything yellow
         } else if (logging >= 0 && logheight == 0) {
-            printevent(addTimeStamp() + " ERROR - " + text);
+            printevent(addTimeStamp() + "\x1b[31m ERROR \x1b[0m - " + text); // red
         } else if (logging >= 1 && logheight == 1) {
-            printevent(addTimeStamp() + " ALERT - " + text);
-            sendAlertMail();
+            printevent(addTimeStamp() + "\x1b[31m ALERT \x1b[0m - " + text); // red
         } else if (logging >= 2 && logheight == 2) {
-            printevent(addTimeStamp() + "  WARN - " + text);
+            printevent(addTimeStamp() + "\x1b[33m  WARN \x1b[0m - " + text); // yellow
         } else if (logging >= 3 && logheight == 3) {
-            printevent(addTimeStamp() + "  INFO - " + text);
+            printevent(addTimeStamp() + "\x1b[36m  INFO \x1b[0m - " + text); // cyan
         } else if (logging >= 4 && logheight == 4) {
-            printelse(addTimeStamp() + "  INFO - " + text);
+            printelse(addTimeStamp() + "\x1b[36m  INFO \x1b[0m - " + text); // cyan
         } else if (logging >= 5 && logheight == 5) {
-            printelse(addTimeStamp() + " DEBUG - " + text);
+            printelse(addTimeStamp() + "\x1b[32m DEBUG \x1b[0m - " + text); // green
         }
     };
 

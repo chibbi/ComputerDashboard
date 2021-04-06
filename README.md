@@ -7,20 +7,16 @@ The whole Folder is 9,6MB big, and 9,0MB without github-files.
 ##### This Dashboard requires nodejs 15.0 or higher.
 
 #### install:  
+  1. install sensors (for cpu temp): ```apt install lm-sensors```
   1. make a file executable: ```chmod +x linux_json_api.sh```  
   2. install all needed node modules: ```npm install-clean```  
   3. create a "user.json" file in the "userDB" folder (there is a template for reference)  
        if you don't create that file, it will create it for you with the "user.json.template" file
   4. make a file executable: ```chmod +x startServer.sh```
   5. start server with: ```./startServer.sh```  
-       you can also restart the server with ```./startServer.sh```  
        ```./startServer.sh``` uses [screen](https://www.gnu.org/software/screen/), if you wish not to use it, just start the server manually with ```npm test``` OR ```node index.js```
 
 ### postinstall:  
-  1. open ```http://localhost:3000```  
+  1. open ```http://localhost:8080```  
   2. login with your defined login
   3. and see the IP of the computer, which you can use to open the Dashboard on anothern Device.
-  
-  in theory it is has localisation, in practice you are never asked which language you prefere xD  
-so if you want custom lines in your dashboard, just edit the "en.json" file in the "locales" directory  
-you can 
