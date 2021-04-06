@@ -1,10 +1,20 @@
 const express = require('express');
+    const fs = require("fs");
 const app = express();
 const http = require("http").createServer(app);
 
 const httpport = 8080;
 
 const log = require("./logging")();
+
+    if (!fs.existsSync(__dirname + "/userDB/users.json")) {
+        log.printlog("Please create your own users.json file", 2)
+        fs.copyFileSync(__dirname + "/userDB/users.json.template", __dirname + "/userDB/users.json");
+    }
+    if (!fs.existsSync(__dirname + "/userDB/sessions.json")) {
+        log.printlog("Created sessions.json file", 5)
+        fs.appendFileSync(__dirname + "/userDB/sessions.json", '[]', 'utf8');
+    }
 
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
