@@ -1,6 +1,3 @@
-This file exists because the folder "logs/" has to exist, to not get error messages
-(jeah i could just check and generate the dir but this is easier)
-
 event.log TEMPLATE ::
 '01-01-2021_18:42:55  WARN - Started as DEVELOPMENT'
 
