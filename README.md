@@ -7,8 +7,6 @@ The whole Folder is 3,1MB big, and  2,4MB without github-files.
 
 ##### This dashboard requires nodejs 15.0 or higher.
 
-## Uses pug (unecessarily so i should just remove it) which seems to contain vulnerabilites
-
 #### Picture, of the full website:
 ![website](https://github.com/chibbi/ComputerDashboard/blob/main/Screenshot_2021-01-06%20Main%20Desktop%20Dashboard.png)
 
