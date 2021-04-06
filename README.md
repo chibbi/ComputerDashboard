@@ -14,7 +14,7 @@ The whole Folder is 3,1MB big, and  2,4MB without github-files.
        if you don't create that file, it will create it for you with the "user.json.template" file
   4. make a file executable: ```chmod +x startServer.sh```
   5. start server with: ```./startServer.sh```  
-       ```./startServer.sh``` uses [screen](https://www.gnu.org/software/screen/), if you wish not to use it, just start the server manually with ```npm test``` OR ```node index.js```
+       ```./startServer.sh``` uses [screen](https://www.gnu.org/software/screen/), if you wish not to use it, just start the server manually with ```npm start``` OR ```node index.js```
 
 ### postinstall:  
   1. open ```http://localhost:8080```  
